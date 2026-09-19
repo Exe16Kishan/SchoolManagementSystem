@@ -1,14 +1,7 @@
-
-import School from "./school.Class";
 import Class from "./classs.Class";
+import School from "./school.Class";
 import Student from "./student.Class";
-
-
-
-
-
-
-
+import { TeacherType } from "./types";
 
 // dummy data jsut to check
 let student1: Student = {
@@ -33,15 +26,35 @@ school1.addStudent(student2);
 // remove students
 school1.removeStudent("5678"); // its working
 
-console.log(school1);
 
 // lets cleanup and use other classes as well
 // like we are creating other obejcts using class
 
+// lets create a class
+school1.addClass(11)
+school1.addClass(12)
 
+// lets create a teacher
 
-// lets create a class 
+const aakarsh: TeacherType = {
+  teacherId: "aakarsh123",
+  name: "aakarsh",
+  subjects : ["maths","science","sst"],
+  classes : []  
+};
 
+const aman: TeacherType = {
+  teacherId: "aman123",
+  name: "aman",
+  subjects : ["maths","science","sst"],
+  classes : []  
+};
 
-const class12 = new Class(12)
-console.log(class12)
+school1.addTeacher(aakarsh)
+school1.addTeacher(aman)
+
+// lets assign the teacher to the class 
+
+school1.assignTeacherToClass("aakarsh123",11)
+
+console.log(school1);

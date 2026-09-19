@@ -13,7 +13,7 @@ type StudentType = {
 };
 
 type TeacherType = {
-  teacherId: number;
+  teacherId: string;
   name: string;
   subjects: string[];
   classes: number[]; // class names are numbers

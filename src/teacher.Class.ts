@@ -1,12 +1,12 @@
 import { TeacherType } from "./types";
 
 class Teacher {
-  teacherId: number;
+  teacherId: string;
   name: string;
   subjects: string[];
   classes: number[];
 
-  constructor({classes,name,subjects,teacherId}:TeacherType){
+  constructor(classes:number[],name:string,subjects:string[],teacherId:string){
     this.teacherId = teacherId,
     this.name = name ,
     this.subjects = subjects ,
