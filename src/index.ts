@@ -83,6 +83,37 @@ class Teacher {
   }
 }
 
+class Class{
+  name: number;
+  students: StudentType[];
+  teacher: TeacherType[];
+  subjects: SubjectType[];
+
+  constructor(name:number){
+    this.name = name
+    this.students =[]
+    this.subjects = []
+    this.teacher = []
+
+  }
+
+
+}
+
+class Subject{
+  subjectId: string;
+  subjectName: string;
+  Teacher: string;
+  classes: number[];
+
+  constructor({Teacher,classes,subjectId,subjectName}:SubjectType){
+    this.subjectId= subjectId
+    this.subjectName = subjectName
+    this.Teacher = Teacher
+    this.classes = classes  
+  }
+}
+
 // dummy data jsut to check
 let student1: Student = {
   studentId: "1234",
@@ -110,3 +141,11 @@ console.log(school1);
 
 // lets cleanup and use other classes as well
 // like we are creating other obejcts using class
+
+
+
+// lets create a class 
+
+
+const class12 = new Class(12)
+console.log(class12)
