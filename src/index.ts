@@ -1,7 +1,7 @@
 import Class from "./classs.Class";
 import School from "./school.Class";
 import Student from "./student.Class";
-import { TeacherType } from "./types";
+import { SubjectType, TeacherType } from "./types";
 
 // dummy data jsut to check
 let student1: Student = {
@@ -40,21 +40,50 @@ const aakarsh: TeacherType = {
   teacherId: "aakarsh123",
   name: "aakarsh",
   subjects : ["maths","science","sst"],
-  classes : []  
+  classes : [11,12,5]  
 };
 
 const aman: TeacherType = {
   teacherId: "aman123",
   name: "aman",
   subjects : ["maths","science","sst"],
-  classes : []  
+  classes : [2,4]  
+};
+
+const shubham: TeacherType = {
+  teacherId: "shubham123",
+  name: "shubham",
+  subjects : ["english"],
+  classes : [1]  
 };
 
 school1.addTeacher(aakarsh)
 school1.addTeacher(aman)
+school1.addTeacher(shubham)
 
 // lets assign the teacher to the class 
 
 school1.assignTeacherToClass("aakarsh123",11)
 
-console.log(school1);
+
+
+// lets create a dummy subjects let say maths and science 
+
+const maths:SubjectType = {
+subjectId:"123",
+subjectName:"maths",
+classes : [11,12],
+Teacher : ""  // should we give name or id ????
+}
+
+// i got an idea we can change the object in the method only or we can write a method in the object to get the properties
+
+// lets see
+
+school1.addSubject(maths) // we are getting the subject
+
+// school1.getTeacherBySubject("maths") 
+
+
+console.dir(school1,{depth:null});
+

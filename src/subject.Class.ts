@@ -6,11 +6,15 @@ class Subject{
   Teacher: string;
   classes: number[];
 
-  constructor({Teacher,classes,subjectId,subjectName}:SubjectType){
+  constructor({classes,subjectId,subjectName}:SubjectType){
     this.subjectId= subjectId
     this.subjectName = subjectName
-    this.Teacher = Teacher
+    this.Teacher = ""
     this.classes = classes  
+  }
+
+  setTeacher(teacherName:string){
+    this.Teacher=teacherName
   }
 }
 

@@ -22,7 +22,7 @@ type TeacherType = {
 type SubjectType = {
   subjectId: string;
   subjectName: string;
-  Teacher: string;
+  Teacher:string   
   classes: number[];
 };
 

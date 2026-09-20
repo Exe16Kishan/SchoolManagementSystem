@@ -2,8 +2,7 @@ import Class from "./classs.Class";
 import Student from "./student.Class";
 import Subject from "./subject.Class";
 import Teacher from "./teacher.Class";
-import { ClassType,SubjectType,StudentType,TeacherType } from "./types";
-
+import { StudentType, SubjectType, TeacherType } from "./types";
 
 class School {
   private static schoolInstance: School;
@@ -12,7 +11,7 @@ class School {
   students: Student[] = [];
   teachers: Teacher[] = [];
   subjects: Subject[] = [];
-  private constructor() {} 
+  private constructor() {}
 
   static instance(): School {
     if (!School.schoolInstance) {
@@ -22,7 +21,7 @@ class School {
   }
 
   addStudent(studentDetail: StudentType): void {
-    const newStudent = new Student(studentDetail)
+    const newStudent = new Student(studentDetail);
     // console.log(newStudent)
 
     this.students.push(newStudent);
@@ -35,29 +34,46 @@ class School {
     this.students.splice(index, 1);
   }
 
-  addTeacher(teacherDetail:TeacherType){
-      const {classes,name,teacherId,subjects}=teacherDetail
-      const newTeacher = new Teacher(classes,name,subjects,teacherId)
-      // console.log(newTeacher)
-      this.teachers.push(newTeacher)
+  addTeacher(teacherDetail: TeacherType) {
+    const { classes, name, teacherId, subjects } = teacherDetail;
+    const newTeacher = new Teacher(classes, name, subjects, teacherId);
+    // console.log(newTeacher)
+    this.teachers.push(newTeacher);
   }
 
-  assignTeacherToClass(teacherId:string , className : number){
-    // so lets add aakarsh to class11 as teacher 
-    const index = this.classes.findIndex((i)=> i.name == className )
+  assignTeacherToClass(teacherId: string, className: number) {
+    // so lets add aakarsh to class11 as teacher
+    const classIndex = this.classes.findIndex((i) => i.name == className);
+    const teacherIndex = this.teachers.findIndex((i)=>i.teacherId == teacherId)
+
     // now we have to add the teacher in that class's index
+    this.classes.at(classIndex)?.assignTeacher(teacherId);
+    this.teachers.at(teacherIndex)?.assignClass(className);
+  }
 
-    this.classes.at(index)?.assignTeacher(teacherId) 
-  
+  addClass(name: number) {
+    const newClass = new Class(name);
+    this.classes.push(newClass);
+  }
+
+  // add subject method 
+  addSubject(subject:SubjectType){
+    const newSubject = new Subject(subject)
+    const teacherName = this.getTeacherBySubject(newSubject.subjectName)
+    newSubject.setTeacher(teacherName)
+    this.subjects.push(newSubject)
+  }
+
+  getTeacherBySubject(subjectName:string):string{
+    const teacherWithSubject = this.teachers.filter((teacher)=> teacher.subjects.includes(subjectName) && teacher.classes.length < 3) 
+    console.log("teacher by subject ",teacherWithSubject)
+    if (!teacherWithSubject) {
+      return " no teacher found"
+    }
+    return teacherWithSubject[0]?.name
   }
 
 
-  addClass(name:number){
-    const newClass = new Class(name)
-    this.classes.push(newClass)
-  }
+
 }
-export default School
-
-
-// there are no method to add the class so lets create it quickkkk
+export default School;

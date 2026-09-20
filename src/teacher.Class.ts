@@ -12,6 +12,11 @@ class Teacher {
     this.subjects = subjects ,
     this.classes = classes
   }
+
+  assignClass(className:number){
+    this.classes.push(className)
+  }
+
 }
 
 export default Teacher
