@@ -22,10 +22,19 @@ type TeacherType = {
 type SubjectType = {
   subjectId: string;
   subjectName: string;
-  Teacher:string   
+  Teacher: string;
   classes: number[];
+};
+
+type attendanceType = {
+  monday: boolean;
+  tuesday: boolean;
+  wednesday: boolean;
+  thursday: boolean;
+  friday: boolean;
+  saturday: boolean;
 };
 
 // or if i remeber we can also do this like this
 
-export { ClassType, StudentType, SubjectType, TeacherType };
+export { ClassType, StudentType, SubjectType, TeacherType ,attendanceType };

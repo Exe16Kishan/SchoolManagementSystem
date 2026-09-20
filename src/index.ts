@@ -1,30 +1,34 @@
 import Class from "./classs.Class";
 import School from "./school.Class";
 import Student from "./student.Class";
-import { SubjectType, TeacherType } from "./types";
+import { StudentType, SubjectType, TeacherType } from "./types";
 
 // dummy data jsut to check
-let student1: Student = {
+let kishan: StudentType = {
   studentId: "1234",
   name: "kishan",
   age: 12,
-  class: 6,
+  class: 12,
+  
 };
 
-let student2: Student = {
+let sonal: StudentType = {
   studentId: "5678",
   name: "sonal",
   age: 12,
-  class: 6,
+  class: 12
 };
 const school1 = School.instance();
 
 // add students
-school1.addStudent(student1);
-school1.addStudent(student2);
+let student1 = school1.addStudent(kishan);
+let student2 = school1.addStudent(sonal);
+
+// lets add students to class 12
+
 
 // remove students
-school1.removeStudent("5678"); // its working
+// school1.removeStudent("5678"); // its working
 
 
 // lets cleanup and use other classes as well
@@ -32,7 +36,9 @@ school1.removeStudent("5678"); // its working
 
 // lets create a class
 school1.addClass(11)
-school1.addClass(12)
+let class12= school1.addClass(12)
+class12.assignStudent(student1.studentId)
+class12.assignStudent(student2.studentId)
 
 // lets create a teacher
 
@@ -84,6 +90,35 @@ school1.addSubject(maths) // we are getting the subject
 
 // school1.getTeacherBySubject("maths") 
 
+const newAttendance = school1.markAttendance(12)
+// so now lets marks the attendance
+newAttendance.markPresent("1234")
+newAttendance.markPresent("5678")
 
+
+// so the attendance system is working lets say sonal did came to class but he didnt completed the class and left before 
+// so im marking him absent
+
+newAttendance.markAbsent("5678")
+
+
+console.log("students of class 12 : ",newAttendance.getStudents())
 console.dir(school1,{depth:null});
 
+
+
+
+
+
+
+
+/**
+ * so todays learning
+ * 
+ * never do lld without tracker
+ * plan before like how classes are related to each other 
+ * plan the methods and all like what methods do a class can have
+ * .... thats it for the day    good night  byyeee
+ * 
+ * 
+ */
