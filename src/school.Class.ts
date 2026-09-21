@@ -21,6 +21,19 @@ class School {
     return this.schoolInstance;
   }
 
+  // get method to get the subject
+
+
+  getSubjectByName(name:string):Subject{
+    const subject = this.subjects.find(i => i.subjectName === name)
+    if (!subject) {
+      throw new Error("subject not found");
+      
+    }
+    return subject
+  }
+
+
   addStudent(studentDetail: StudentType): Student {
     const newStudent = new Student(studentDetail);
     this.students.push(newStudent);
@@ -91,22 +104,3 @@ class School {
   }
 }
 export default School;
-
-// lets create mark attendance system
-
-// so how it works ??
-/***
- * so lets say that there is global lvl attendace system
- * where teacher can access the attendance and can mark the attendance
- * so for that we can create a array of objects or simply a hash map for that
- * or just take the value from the class itself
- *
- *
- * lets thinkkkk how we can create like we can create a object where we can details of all the students or how many are presents weekly
- *
- */
-
-// Mark attendance (class) -> we can filter that class and get the student's array -> and from that array , in the studentArray we can store the objects (not gonna recommend we can use id instead but still we gonna use those id to get the student object so lets keep things simple and use the objects of the students ) - > and from that object we gonna mark the attendance of that day for the students side ,
-
-// and for teacher they can just count the heads and mark the total students on that day
-// now what i think we should make some changes to the student type

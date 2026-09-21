@@ -1,6 +1,9 @@
 import Class from "./classs.Class";
+import { Exam } from "./exam.class";
+import { ExamSubject } from "./examSubject.class";
 import School from "./school.Class";
 import Student from "./student.Class";
+import Subject from "./subject.Class";
 import { StudentType, SubjectType, TeacherType } from "./types";
 
 // dummy data jsut to check
@@ -82,12 +85,19 @@ classes : [11,12],
 Teacher : ""  // should we give name or id ????
 }
 
+const science:SubjectType = {
+subjectId:"456",
+subjectName:"science",
+classes : [11,12],
+Teacher : ""  // should we give name or id ????
+}
+
 // i got an idea we can change the object in the method only or we can write a method in the object to get the properties
 
 // lets see
 
 school1.addSubject(maths) // we are getting the subject
-
+school1.addSubject(science)
 // school1.getTeacherBySubject("maths") 
 
 const newAttendance = school1.markAttendance(12)
@@ -102,23 +112,42 @@ newAttendance.markPresent("5678")
 newAttendance.markAbsent("5678")
 
 
-console.log("students of class 12 : ",newAttendance.getStudents())
+
+// lets create a exam for class 12 
+
+const examClass12 = new Exam(12,"midterm")
+
+
+const Maths = school1.getSubjectByName("maths")
+const Science = school1.getSubjectByName("science")
+
+const mathsSubForExam = new ExamSubject(Maths,100,50)
+const scienceSubForExam = new ExamSubject(Science,100,50)
+
+examClass12.addSubject(mathsSubForExam)
+examClass12.addSubject(scienceSubForExam)
+
+
+
+
+console.log(examClass12)
+// console.log("students of class 12 : ",newAttendance.getStudents())
 console.dir(school1,{depth:null});
 
 
 
 
 
+// tip:  plan before about everything like what each entity will do 
+// it can save your so muchh time 
 
 
 
-/**
- * so todays learning
- * 
- * never do lld without tracker
- * plan before like how classes are related to each other 
- * plan the methods and all like what methods do a class can have
- * .... thats it for the day    good night  byyeee
- * 
- * 
- */
+
+
+
+
+
+
+
+

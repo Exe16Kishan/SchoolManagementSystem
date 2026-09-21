@@ -13,6 +13,7 @@ class Student {
     friday: false,
     saturday: false,
   };
+  
   constructor({ studentId, age, class: std, name }: StudentType) {
     ((this.studentId = studentId),
       (this.name = name),
@@ -24,3 +25,6 @@ class Student {
 }
 
 export default Student;
+
+
+

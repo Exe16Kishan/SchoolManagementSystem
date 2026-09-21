@@ -1,6 +1,4 @@
 
-import {  StudentType,TeacherType,SubjectType} from "./types";
-
 class Class{
   name: number;
   students: string[];
@@ -12,7 +10,6 @@ class Class{
     this.students =[]
     this.subjects = []
     this.teacher = []
-
   }
 
  
