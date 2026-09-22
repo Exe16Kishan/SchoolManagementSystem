@@ -18,5 +18,7 @@ export class Exam {
   // lets check is it working like we expected or not
 }
 
-// lets also create a exam subject like we can add the criteria
-// like name , max marks , min marks
+
+// lets create examresult class 
+
+// it have all the result of that subjectResult 
